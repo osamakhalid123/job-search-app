@@ -1,0 +1,21 @@
+@import "../../styles/all";
+.headerContainer{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 5px;
+    background-color: white;
+    height: 77px;
+    align-items: center;
+    .logo{
+        min-width: 50%;
+        @include flex-center;
+    }
+    .navLinks{
+        min-width: 50%;
+        @include flex-center
+    }
+}
+
+
+
+

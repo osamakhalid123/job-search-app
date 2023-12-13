@@ -3,6 +3,7 @@ import styles from "./styles.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSkillName } from "../../Redux/jobsSlice";
 import { RootState } from "../../Redux/store";
+import { Link } from "react-router-dom";
 
 interface Skill {
   id: string;
@@ -40,9 +41,13 @@ function Card({ job }: CardProps) {
       const skillName = (skillNameData as { data?: { skill?: { attributes?: { name?: string } } } })?.data?.skill?.attributes?.name || "Loading...";
 
       return (
-        <p key={skill.id} className={styles.tag}>
+        // <Link key={skill.id} to={`/skill/${skill.id}`}>
+           <p key={skill.id} className={styles.tag}>
           {skillName}
         </p>
+        // </Link>
+          
+       
       );
     });
   };
@@ -53,8 +58,13 @@ function Card({ job }: CardProps) {
         {job.attributes.title}
       </div>
       <div className={`${styles.relatedSkillsContainer}`}>
+        <p className={`${styles.relatedSkills}`}>Related Skills:</p>
+        <div  className={styles.skillTags}>
+
         {renderSkills()}
       </div>
+      </div>
+
       <p className={`${styles.viewDetails}`}>
         View Job details
       </p>

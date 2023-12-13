@@ -3,9 +3,8 @@
 .cardContainer{
 
     background-color: white;
-    max-width: 600px;
     padding: 20px;
-
+    min-height: 150px;
     .header{
         font-size: 24px;
         font-weight: 700;
@@ -14,8 +13,10 @@
         .relatedSkills{
             font-weight: 400;
             font-size: 18px;
+            margin: 13px 0;
         }
         .skillTags{
+            display: flex;
             .tag{
                 background-color: #C4C4C4;
                 font-weight: 400;
@@ -23,7 +24,7 @@
                 width: fit-content;
                 padding: 5px;
                 border-radius: 5px;
-                margin: 12px 0px;
+                margin: 10px 5px;
             }
         }
     }

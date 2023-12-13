@@ -35,9 +35,12 @@ function Home() {
       <div className={`${styles.jobsHeader}`}>
         All jobs ({jobs.length})
       </div>
+      <div className={`${styles.cardWrapper}`}>
       {jobs.map((job) => (
         <Card key={job.id} job={job} />
       ))}
+      </div>
+     
     </div>
   );
 }

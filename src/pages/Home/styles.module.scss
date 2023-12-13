@@ -1,5 +1,15 @@
 
 .homeContainer{
+
+width: 100%;
+
+.cardWrapper{
+  width: 100%;
+
+  display: grid;
+      grid-template-columns: 1fr 1fr; /* Two columns of equal width */
+      gap: 30px;
+}
   .jobsHeader{
     margin-top: 20px;
 }  

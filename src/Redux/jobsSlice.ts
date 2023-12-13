@@ -26,22 +26,21 @@ interface ApiResponse {
         };
     };
 }
-
-// interface JobsState {
-//     jobs: Job[];
-//     status: boolean;
-// }
-
+interface SkillState {
+    [skillId: string]: string; // Skill ID mapped to skill name
+  }
 interface JobsState {
     jobs: Job[];
     status: boolean;
     currentPage: number; // Add this property
+    skillState: SkillState;
   }
   
   const initialState: JobsState = {
     jobs: [],
     status: false,
     currentPage: 0, // Set initial page or cursor
+    skillState: {},
   };
 
   export const fetchJobs = createAsyncThunk<ApiResponse, number>(
@@ -53,35 +52,15 @@ interface JobsState {
       return response.data;
     }
   );
-
-// const initialState: JobsState = {
-//     jobs: [],
-//     status: false,
-// };
-
-// const jobsSlice = createSlice({
-//     name: "jobs",
-//     initialState,
-//     reducers: {
-//         allJobs: (state, action: PayloadAction<ApiResponse>) => {
-//             state.jobs = action.payload.data.jobs;
-//         },
-//     },
-//     extraReducers: (builder) => {
-//         builder
-//             .addCase(fetchJobs.pending, (state) => {
-//                 state.status = true;
-//             })
-//             .addCase(fetchJobs.fulfilled, (state, action) => {
-//                 state.status = false;
-//                 state.jobs = action.payload.data.jobs;
-//             })
-//             .addCase(fetchJobs.rejected, (state) => {
-//                 state.status = false;
-//             });
-//     },
-// });
-
+  export const fetchSkillName = createAsyncThunk<
+  { skillId: string; skillName: string },
+  string
+>('skills/fetchSkillName', async (skillId: string) => {
+  const response = await axios.get<string>(`https://skills-api-zeta.vercel.app/skill/${skillId}`);
+  return { skillId, skillName: response.data };
+});
+  
+  
 const jobsSlice = createSlice({
     name: "jobs",
     initialState,
@@ -102,7 +81,13 @@ const jobsSlice = createSlice({
         })
         .addCase(fetchJobs.rejected, (state) => {
           state.status = false;
-        });
+        })
+        .addCase(fetchSkillName.fulfilled, (state, action: PayloadAction<{ skillId: string; skillName: string }>) => {
+            const { skillId, skillName } = action.payload;
+            state.skillState[skillId] = skillName;
+          });
+        
+        
     },
   });
 

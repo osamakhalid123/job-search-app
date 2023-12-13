@@ -1,11 +1,34 @@
 
 import styles from "./styles.module.scss";
 
-function Card() {
+interface Skill {
+  id: string;
+}
+
+interface Job {
+  id: string;
+  type: string;
+  attributes: {
+    title: string;
+  };
+  relationships: {
+    skills: Skill[];
+  };
+}
+
+interface CardProps {
+  job: Job;
+}
+
+
+function Card({ job }: CardProps) {
+
+
+  console.log(job,"job")
   return (
     <div className={`${styles.cardContainer}`}>
         <div className={`${styles.header}`}>
-            4th Grade Math Teacher
+            {job.attributes.title}
         </div>
 
         <div className={`${styles.relatedSkillsContainer}`}>

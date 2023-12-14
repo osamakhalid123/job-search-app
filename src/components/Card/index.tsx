@@ -41,13 +41,11 @@ function Card({ job }: CardProps) {
       const skillName = (skillNameData as { data?: { skill?: { attributes?: { name?: string } } } })?.data?.skill?.attributes?.name || "Loading...";
 
       return (
-        // <Link key={skill.id} to={`/skill/${skill.id}`}>
+        <Link key={skill.id} to={`/skill/${skill.id}`}>
            <p key={skill.id} className={styles.tag}>
           {skillName}
         </p>
-        // </Link>
-          
-       
+        </Link>
       );
     });
   };
@@ -55,8 +53,11 @@ function Card({ job }: CardProps) {
   return (
     <div className={`${styles.cardContainer}`}>
       <div className={`${styles.header}`}>
-        {job.attributes.title}
+        <Link to={`/job/${job.id}`} className={`${styles.jobTitleLink}`}>
+          {job.attributes.title}
+        </Link>
       </div>
+      
       <div className={`${styles.relatedSkillsContainer}`}>
         <p className={`${styles.relatedSkills}`}>Related Skills:</p>
         <div  className={styles.skillTags}>

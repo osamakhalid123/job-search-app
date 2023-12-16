@@ -6,8 +6,10 @@
 body {
  font-family: 'Roboto';
  background-color: #F2F2F2;
+ overflow-x: hidden;
 }
 
 a{
   text-decoration: none;
+  color: black;
 }

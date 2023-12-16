@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
-import styles from "./styles.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchSkillName } from "../../Redux/jobsSlice";
-import { RootState } from "../../Redux/store";
+
 import { Link } from "react-router-dom";
+import { RootState } from "../../Redux/store";
+import { fetchSkillName } from "../../Redux/jobsSlice";
+import styles from "./styles.module.scss";
 
 interface Skill {
   id: string;
@@ -33,6 +34,7 @@ function Card({ job }: CardProps) {
       dispatch(fetchSkillName(skill.id));
     });
   }, [dispatch, job]);
+  console.log(job,"jobFromCard")
 
   const renderSkills = () => {
     return job.relationships.skills.map((skill) => {
@@ -66,9 +68,9 @@ function Card({ job }: CardProps) {
       </div>
       </div>
 
-      <p className={`${styles.viewDetails}`}>
+      <Link to="/" className={`${styles.viewDetails}`}>
         View Job details
-      </p>
+      </Link>
     </div>
   );
 }

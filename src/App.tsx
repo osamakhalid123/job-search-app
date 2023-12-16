@@ -1,10 +1,12 @@
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+
 import Header from './components/Header';
-import Search from './components/Search';
 import Home from './pages/Home';
-import styles from "./App.module.scss";
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import SkillDetails from './pages/Home/SkillDetails';
 import JobDetails from './pages/Home/JobDetails';
+import Search from './components/Search';
+import SearchPage from './pages/SearchPage';
+import SkillDetails from './pages/Home/SkillDetails';
+import styles from "./App.module.scss";
 
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/skill/:skillId" Component={SkillDetails} />
           <Route  path="/job/:jobId" Component={JobDetails} />
+          <Route  path="/search" Component={SearchPage} />
         </Routes>
       </div>
     </div>

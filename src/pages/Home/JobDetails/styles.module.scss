@@ -1,0 +1,64 @@
+.jobDetailsPage{
+    width: 100%;
+    gap: 40px;
+
+    .jobName{
+        width: 100%;
+        font-size: 48px;
+        font-weight: 700;
+    }
+    .jobDetailsContainer{
+        display: flex;
+        justify-content: space-between;
+        margin-top: 50px;
+
+        .relatedSkillsheader{
+            font-size: 24px;
+            font-weight: 700;
+            padding: 20px 18px;
+
+        }
+
+        .relatedSkillsContainer{
+            
+           background-color: white;
+           width: 50%;
+        .relatedSkillCard{
+            background-color: #F0F0F0;
+            margin: 10px auto;
+            width: 90%;
+            padding: 40px 18px;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            .relatedSkillCardDetails{
+                display: flex;
+                flex-direction: column;
+                min-height: 110px;
+                justify-content: space-between;
+            
+            
+            .skillName{
+                font-weight: 700;
+                font-size: 24px;
+                text-decoration: underline;
+
+            }
+            .skillInfoContainer{
+                display: flex;
+                justify-content: space-between;
+                margin: 8px 0;
+                align-items: center;
+                .skillInfo  {
+                    display: flex;
+                    align-items: center;
+
+                }
+            }
+        }
+        }
+       }
+    .relatedJobsContainer{} 
+    }
+    
+}
